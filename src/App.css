@@ -1,0 +1,467 @@
+* {
+  box-sizing: border-box;
+
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+
+}
+
+
+/* Main Container. Only parent--body */
+.app--container {
+  /* min-width: 40px; */
+  margin: 0;
+  padding: 20px 28px;
+  background: #EDEDED;
+  border:1px solid green;
+}
+
+
+/* STYLING FOR CARDS */
+
+
+/* Main unordered list that renders all the cards retrieved
+from the API */
+ul {
+  list-style: none;
+  display: block;
+  padding-inline-start: 0;
+  margin-bottom: 24px;
+  border-radius: 8px;
+}
+
+.cardBackground {
+  background: #FFFFFF;
+  padding-bottom: 16px;
+}
+
+/* Details Card */
+.detailedCard {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 0 0;
+
+}
+
+
+
+/* Card Styling */
+.card--container {
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 8px;
+  
+}
+
+
+.cardHeader {
+  width: 100%;
+  background: #969696;
+  padding: 16px 16px 10px 16px;
+  margin: 24px 0 0 0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+
+}
+
+.searchBar {
+  width: 126px;
+  height: 32px;
+  background: #FFFFFF;
+  border-radius: 4px;
+
+
+}
+
+.cardHeaderTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+
+}
+
+.cardName {
+  display: flex;
+  width: fit-content;
+  height: 24px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 24px;
+  color: #FFFFFF;
+  margin-top: 16px;
+  overflow: hidden;
+}
+
+.cardBioData {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid grey;
+  padding: 8px 6px;
+  width: 90%;
+  gap: 2em;
+  margin: 0 auto;
+}
+
+.cardBioData p {
+  margin: 0;
+
+}
+
+.iconBirthYear--container :nth-child(2) {
+  width: 42px;
+  height: 14px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  text-align: center;
+  color: #3B3B3B;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.iconBirthYear--container {
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+
+.iconBirthYear--container img {
+  width: 9.75px;
+  height: 9.75px;
+  padding: 0;
+  margin: 0 8px 0 0;
+
+}
+
+.personDetailsList {
+  background: #EDEDED;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 32px;
+  border-radius: 4px;
+  margin: 8px 16px;
+  padding: 9px 10px;
+}
+
+.personDetailsList p {
+  width: fit-content;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  text-align: right;
+  color: #3B3B3B;
+
+}
+
+.personDetailsText {
+  font-size: .675rem;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  color: #3B3B3B;
+  align-self: center;
+}
+
+.personDetailsIcon {
+  width: 10%;
+  margin-top: 0;
+}
+
+.birthYear {
+  width: 42px;
+  height: 14px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  text-align: center;
+  color: #3B3B3B;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+
+.pageBtnRow * {
+  width: 36px;
+  height: 32px;
+  margin: 0 8px;
+}
+
+
+.paginationActive {
+  background: grey;
+}
+
+
+/* Loading image */
+.loadingImg {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.loadingImg img {
+  width: 10%;
+}
+
+
+
+/* App Header buttons/links */
+.navLinksRowContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+
+.seperator {
+  width: 100%;
+  height: 2px;
+  background: #B8B8B8;
+  border-radius: 2px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 16px 0 0 0;
+}
+
+.cardDeckBtn {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: .5em;
+  width: 100%;
+}
+
+.profileName {
+  width: fit-content;
+  height: 32px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  color: #3B3B3B;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  border-radius: 4px
+}
+
+.profileName:is(:hover,:focus){
+  transform: scale(1.1);
+  box-shadow: 1px 1px 2px rgba(110, 107, 107, 0.947);  
+}
+
+.allCardsMenuImg {
+  width: 7em;
+  height: 32px;
+  border-radius: 4px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  background-image: url("./assets/images/allCardsBtn.svg");
+  background-size: cover;
+}
+
+.allCardsMenuImg:is(:hover,:focus) {
+  transform: scale(1.1);
+  box-shadow: 1px 1px 2px rgba(110, 107, 107, 0.947);
+}
+
+.decksMenuImg:is(:hover,:focus){
+  transform: scale(1.1);
+  box-shadow: 1px 1px 2px rgba(110, 107, 107, 0.947);
+}
+.decksMenuImg {
+  flex: none;
+  flex-grow: 0;
+  order: 1;
+  width: 5.75em;
+  height: 32px;
+  background-image: url("./assets/images/decksMenutBtn.svg");
+  border-radius: 4px;
+  background-size: cover;
+}
+
+/* Breadcrumbs styling */
+.breadCrumbs {
+  margin: 48px 0 0 0;
+}
+
+a{
+  text-decoration: none;
+  color:inherit;
+}
+
+a:is(:hover,:focus){
+  text-decoration: underline;
+  color:blue;
+}
+
+.breadCrumbs span {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  color: #969696;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+/* Search Area */
+
+.searchContainer {
+  display: flex;
+  margin: 24px 0 0 0;
+  gap: .375em;
+
+}
+
+
+
+/* A-Z Button */
+.searchContainer :nth-child(2) {
+  box-sizing: border-box;
+  padding: 8px 10px;
+  width: fit-content;
+  height: 32px;
+  background: #FFFFFF;
+  border: 1px solid #B8B8B8;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+
+
+}
+
+/* Youngest button*/
+.searchContainer :nth-child(3) {
+  width: fit-content;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: #3B3B3B;
+}
+
+/* Eldest button*/
+.searchContainer :nth-child(4) {
+  width: fit-content;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  color: #3B3B3B;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+
+}
+
+
+/* Media Queries */
+
+
+/* Tablet Screen */
+@media (min-width:800px) and (max-width:1439px) {
+
+  .wholeCards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+
+  }
+
+
+  .searchBar {
+    /* flex-grow: 1; */
+    width: 224px;
+  }
+
+  .personDetailsText {
+    font-size: .675rem;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    color: #3B3B3B;
+    align-self: center;
+  }
+
+  .cardHeader {
+    background: #969696;
+    padding: 16px 16px 10px 16px;
+    margin: 0;
+
+
+  }
+
+}
+
+
+/* Desktop Screen */
+@media (min-width:1440px) {
+
+  .app--container {
+    max-width: 1204px;
+  }
+
+  .wholeCards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 1em;
+  }
+
+
+
+  .wholeCards {
+    padding: 0;
+
+  }
+
+  .cardHeader {
+    margin: 0;
+  }
+
+
+  .searchBar {
+    width: 352px;
+  }
+
+  .app--container {
+    background: linear-gradient(180deg, rgba(237, 237, 237, 0.947) 0%, #c7c5c523 29.75%);
+
+  }
+
+}
