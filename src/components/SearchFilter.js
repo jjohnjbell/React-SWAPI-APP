@@ -1,7 +1,7 @@
 import React from 'react'
 
 function SearchFilter(props) {
-  const { search, setSearch} = props;
+  const { search, setSearch,fetchPeopleSorted} = props;
 
   function handelInput(e) {
     const text = e.target.value;
@@ -13,7 +13,7 @@ function SearchFilter(props) {
         <input className = "searchBar" type="search"  placeholder='Search' onChange={handelInput}  /> 
        {/* Shows what you are typing realtime in the searchbar */}
         {/* <h1>{search}</h1> */}
-        <button>A to Z </button>
+        <button id="aToZ" onClick={fetchPeopleSorted}>A to Z </button>
         <button>Youngest</button>
         <button>Oldest</button>
 

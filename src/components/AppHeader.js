@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from "react-router-dom"; 
 
 export default function AppHeader(){
 
@@ -13,16 +14,20 @@ export default function AppHeader(){
     }
     
     function underConstruction(){
-        document.getElementById("message").textContent = "Apologies, Under Construction! ⛏ "
-        setTimeout(() => document.getElementById("message").textContent = "",3000)
+        // document.getElementById("message").textContent = "Apologies, Under Construction! ⛏ "
+        // setTimeout(() => document.getElementById("message").textContent = "",3000)
+        // setSearch
     }
 
+    // const [message,setMessage]=useState('')
+    // const [message,setMessage]=useState('')
+    // const [message,setMessage]=useState('')
 
     return(
         <header>
             <nav className="navLinksRowContainer"> 
                 <div className='cardDeckBtn'>
-                    <button href="#" id="underConstruction" onClick={underConstruction} className="allCardsMenuImg"></button>
+                    <a href="/"><button   id="underConstruction" className="allCardsMenuImg"></button></a>
                     <button href="#" onClick={tbc}className="decksMenuImg"> </button>
                 </div>
                 <button href="#" onClick={thankYou} id="profileName"  className="profileName"> Joshua Bell</button>

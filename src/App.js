@@ -4,7 +4,7 @@ import CardsDetails from './pages/CardsDetail';
 import AppHeader from './components/AppHeader.js'
 import Breadcrumb from './components/Breadcrumb';
 
-import { Outlet, Routes, Route} from 'react-router-dom'
+import {Outlet, Routes, Route} from 'react-router-dom'
 
 function Layout() {
   return (
@@ -19,7 +19,9 @@ function Layout() {
 function App() {
 
   return (
-    <div className='app--container'>
+    // <div className='app--container'>
+    <>
+
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<AllCardsPage />} />
@@ -27,7 +29,9 @@ function App() {
           <Route path="/*" element={<><h1>404 - Not Found</h1></>} />
         </Route>
       </Routes>
-    </div>
+       {/* </div> */}
+    </>
+   
   );
 }
 

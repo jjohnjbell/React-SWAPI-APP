@@ -19,7 +19,7 @@ export default function Card(props) {
     async function fetchPersonsHomeWorld(url) {
         const homeworldObject = await axios.get(url)
         const { data } = homeworldObject
-        const homeName = data.name
+         const homeName = data.name
         setHomeworld(homeName)
     }
     
@@ -42,6 +42,7 @@ export default function Card(props) {
         const startshipResponses = await axios.all(startshipRequests);
 
         const vehicleArray = vehicleResponses.map((vehicle) => vehicle.data);
+   
         const starshipArray = startshipResponses.map((startship) => startship.data);
 
         setFetchedVehicles(vehicleArray)
@@ -60,6 +61,8 @@ export default function Card(props) {
             fetchVehiclesAndStarships();
         }
     }, [])
+
+
     return (
         <li className='card--container' >
 

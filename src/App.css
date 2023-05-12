@@ -7,27 +7,34 @@ html,
 body {
   margin: 0;
   padding: 0;
+  border: 1px solid red;
 }
 
 
 
-body {
+/* body {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
 
-}
+} */
 
 
 /* Main Container. Only parent--body */
-.app--container {
-  /* min-width: 40px; */
-  margin: 0;
-  padding: 20px 28px;
+/* .app--container { */
+body {
+  /* width:100vw; */
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  padding: 20px 30px;
   background: #EDEDED;
-  border:1px solid green;
+  /* overflow-y: auto; */
 }
 
+/* #root{
+  width:80%;
+} */
 
 /* STYLING FOR CARDS */
 
@@ -62,7 +69,7 @@ ul {
   width: 100%;
   background: #FFFFFF;
   border-radius: 8px;
-  
+
 }
 
 
@@ -254,11 +261,11 @@ ul {
   display: flex;
   justify-content: left;
   align-items: center;
-  gap: .5em;
+  /* gap: .5em; */
   width: 100%;
 }
 
-.profileName {
+#profileName {
   width: fit-content;
   height: 32px;
   font-family: 'Roboto';
@@ -273,9 +280,9 @@ ul {
   border-radius: 4px
 }
 
-.profileName:is(:hover,:focus){
+.profileName:is(:hover, :focus) {
   transform: scale(1.1);
-  box-shadow: 1px 1px 2px rgba(110, 107, 107, 0.947);  
+  box-shadow: 1px 1px 2px rgba(110, 107, 107, 0.947);
 }
 
 .allCardsMenuImg {
@@ -289,15 +296,23 @@ ul {
   background-size: cover;
 }
 
-.allCardsMenuImg:is(:hover,:focus) {
+#aToZ{
+  width: 63px;
+  height: 32px;
+  /* margin: 0 5px; */
+
+}
+
+.allCardsMenuImg:is(:hover, :focus) {
   transform: scale(1.1);
   box-shadow: 1px 1px 2px rgba(110, 107, 107, 0.947);
 }
 
-.decksMenuImg:is(:hover,:focus){
+.decksMenuImg:is(:hover, :focus) {
   transform: scale(1.1);
   box-shadow: 1px 1px 2px rgba(110, 107, 107, 0.947);
 }
+
 .decksMenuImg {
   flex: none;
   flex-grow: 0;
@@ -314,14 +329,14 @@ ul {
   margin: 48px 0 0 0;
 }
 
-a{
+a {
   text-decoration: none;
-  color:inherit;
+  color: inherit;
 }
 
-a:is(:hover,:focus){
+a:is(:hover, :focus) {
   text-decoration: underline;
-  color:blue;
+  color: blue;
 }
 
 .breadCrumbs span {
@@ -342,7 +357,7 @@ a:is(:hover,:focus){
 .searchContainer {
   display: flex;
   margin: 24px 0 0 0;
-  gap: .375em;
+  /* gap: .375em; */
 
 }
 
@@ -390,6 +405,17 @@ a:is(:hover,:focus){
 
 }
 
+#allCardsText {
+  width: 64px;
+  height: 16px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  color: #757575;
+}
 
 /* Media Queries */
 
@@ -406,7 +432,6 @@ a:is(:hover,:focus){
 
 
   .searchBar {
-    /* flex-grow: 1; */
     width: 224px;
   }
 
@@ -425,6 +450,10 @@ a:is(:hover,:focus){
     margin: 0;
 
 
+  }
+
+  body {
+    padding: 64px 189px 26px 189px;
   }
 
 }

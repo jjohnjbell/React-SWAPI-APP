@@ -6,7 +6,7 @@ export default function Pagination({ count, setPage, page }) {
 
     // use the possible number of pags to create an array of that amount
     const pagesArray = [...Array(totalPages).keys()]
-
+   
     function pageHandler(newPage){
         if (newPage !== page ){
             setPage(newPage)

@@ -6,6 +6,8 @@ import Pagination from '../components/Pagination';
 import { Link } from 'react-router-dom';
 
 
+
+
 export default function AllCardsPage() {
   const [page, setPage] = useState(1)
   const [people, setPeople] = useState([])
@@ -14,6 +16,8 @@ export default function AllCardsPage() {
   const [isLoading, setLoadingState] = useState(true)
 
   async function fetchPeople() {
+    console.log("fetchPpl ran")
+    setPage(1)
     const url = `https://swapi.dev/api/people/?page=${page}`
     setLoadingState(true)
     const peopleResults = await axios.get(url);
@@ -21,8 +25,29 @@ export default function AllCardsPage() {
     const { results, count } = data
     setPeople(results)
     setCount(count)
+    
     setLoadingState(false)
-    // console.log(results)
+    setSearch('')
+  }
+
+  async function fetchPeopleSorted() {
+    const url = `https://swapi.dev/api/people/?page=${page}`
+    setLoadingState(true)
+    const peopleResults = await axios.get(url);
+    const { data } = peopleResults;
+    const { results, count } = data
+    const sorted= results.sort((a,b) => {
+      if (a.name > b.name){
+        return 1
+      }else if (b.name > a.name){
+        return -1
+      }else{
+        return 0
+      }
+    })
+    setPeople(sorted)
+    setCount(count)
+    setLoadingState(false)
   }
 
 
@@ -45,7 +70,6 @@ export default function AllCardsPage() {
         setPeople(results)
         setCount(count)
         setLoadingState(false)
-        console.log({ searchResults })
       }
     }, 1000)
 
@@ -59,6 +83,7 @@ export default function AllCardsPage() {
       <SearchFilter
         search={search}
         setSearch={setSearch}
+        fetchPeopleSorted={fetchPeopleSorted}
       />
 
       {isLoading && <div className="loadingImg"> <img src="./images/loading-gif.webp" />
@@ -66,7 +91,7 @@ export default function AllCardsPage() {
 
       {!isLoading && <ul className="wholeCards">
         {people.map((person) => (
-          <Card key={person.name} {...person} />
+          <Card  key={person.name} {...person} />
         ))}
       </ul>}
 
