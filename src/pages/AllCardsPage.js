@@ -25,23 +25,24 @@ export default function AllCardsPage() {
     const { results, count } = data
     setPeople(results)
     setCount(count)
-    
+
     setLoadingState(false)
     setSearch('')
   }
 
+  //Sort Persons from A to Z
   async function fetchPeopleSorted() {
     const url = `https://swapi.dev/api/people/?page=${page}`
     setLoadingState(true)
     const peopleResults = await axios.get(url);
     const { data } = peopleResults;
     const { results, count } = data
-    const sorted= results.sort((a,b) => {
-      if (a.name > b.name){
+    const sorted = results.sort((a, b) => {
+      if (a.name > b.name) {
         return 1
-      }else if (b.name > a.name){
+      } else if (b.name > a.name) {
         return -1
-      }else{
+      } else {
         return 0
       }
     })
@@ -49,6 +50,45 @@ export default function AllCardsPage() {
     setCount(count)
     setLoadingState(false)
   }
+
+  async function fetchOldest() {
+    const url = `https://swapi.dev/api/people/?page=${page}`
+    setLoadingState(true)
+    const peopleResults = await axios.get(url);
+    const { data } = peopleResults;
+    const { results, count } = data
+    const sorted = results.sort((a, b) => {
+      if (a.birth_year > b.birth_year) {
+        return 1
+      } else if (b.birth_year > a.birth_year) {
+        return -1
+      } else {
+        return 0
+      }
+    })
+  }
+
+  async function fetchYoungest() {
+    const url = `https://swapi.dev/api/people/?page=${page}`
+    setLoadingState(true)
+    const peopleResults = await axios.get(url);
+    const { data } = peopleResults;
+    const { results, count } = data
+    const sorted = results.sort((a, b) => {
+      if (b.birth_year > a.birth_year) {
+        return 1
+      } else if (b.birth_year < a.birth_year) {
+        return -1
+      } else {
+        return 0
+      }
+    })
+    setPeople(sorted)
+    setCount(count)
+    setLoadingState(false)
+  }
+
+
 
 
   useEffect(() => {
@@ -76,7 +116,7 @@ export default function AllCardsPage() {
     return () => clearTimeout(timeoutId)
   }, [search])
 
-  
+
 
   return (
     <>
@@ -84,6 +124,8 @@ export default function AllCardsPage() {
         search={search}
         setSearch={setSearch}
         fetchPeopleSorted={fetchPeopleSorted}
+        fetchYoungest = {fetchYoungest}
+        fetchOldest={fetchOldest}
       />
 
       {isLoading && <div className="loadingImg"> <img src="./images/loading-gif.webp" />
@@ -91,9 +133,11 @@ export default function AllCardsPage() {
 
       {!isLoading && <ul className="wholeCards">
         {people.map((person) => (
-          <Card  key={person.name} {...person} />
+          <Card key={person.name} {...person} />
         ))}
+
       </ul>}
+
 
       {count > 0 && <Pagination
         page={page}
@@ -101,7 +145,7 @@ export default function AllCardsPage() {
         count={count}
       />}
 
-    
+
 
     </>
   )
