@@ -6,7 +6,6 @@ import Breadcrumb from './Breadcrumb';
 import DeckBreadCrumb from './DeckBreadCrumb';
 import Deck from './Deck';
 import DeckSearch from './DeckSearch';
-import axios, { isCancel, AxiosError } from 'axios'
 
 
 
@@ -36,6 +35,8 @@ export default function AllDecksPage() {
     setLocalStorageArray(newArray)
   }, [localCount])
 
+
+
   return (
     <>
 
@@ -49,7 +50,7 @@ export default function AllDecksPage() {
 
       {localCount && <ul className="wholeCards" >
         {localStorageArray.map((item) => (
-          <Deck key={item.height} name={item} localCount={localCount} />
+          <Deck key={localStorageArray.indexOf(item)} name={item} localCount={localCount} />
         ))}
       </ul>}
 

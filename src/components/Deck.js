@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 export default function Deck(props) {
-    const navigate = useNavigate();
     const [bgImg, setBgImg] = useState('../images/blackBg.svg')
 
     let bgArray = ['../images/blackBg.svg', '../images/redBg.svg', '../images/greenBg.svg']
@@ -14,7 +13,12 @@ export default function Deck(props) {
         setBgImg(bgArray[randomChooser])
     }, [])
     
+function countValue(key){
+    return localStorage.getItem(key).length
+    
+}
 
+// console.log(JSON.parse(localStorage.key(joshua)).length)
 
     return (
         <li className='deckItem' >
@@ -31,7 +35,8 @@ export default function Deck(props) {
             </div>
 
             <div className='deckBody' >
-                <span>{props.localCount}</span>
+                <span>{countValue(props.name)}</span>
+                {/* <span>{props.localCount}</span> */}
                 <p>total cards</p>
 
             </div>
