@@ -15,9 +15,12 @@ export default function AllCardsPage() {
   const [search, setSearch] = useState('')
   const [isLoading, setLoadingState] = useState(true)
 
+
+  // localStorage.setItem("made up","tested")
+  
+  // setTimeout(()=>localStorage.clear(),5000)
+
   async function fetchPeople() {
-    console.log("fetchPpl ran")
-    setPage(1)
     const url = `https://swapi.dev/api/people/?page=${page}`
     setLoadingState(true)
     const peopleResults = await axios.get(url);
@@ -25,10 +28,10 @@ export default function AllCardsPage() {
     const { results, count } = data
     setPeople(results)
     setCount(count)
-
     setLoadingState(false)
     setSearch('')
   }
+
 
   //Sort Persons from A to Z
   async function fetchPeopleSorted() {
@@ -47,6 +50,7 @@ export default function AllCardsPage() {
       }
     })
     setPeople(sorted)
+    
     setCount(count)
     setLoadingState(false)
   }
@@ -118,6 +122,8 @@ export default function AllCardsPage() {
 
 
 
+
+
   return (
     <>
       <SearchFilter
@@ -133,7 +139,7 @@ export default function AllCardsPage() {
 
       {!isLoading && <ul className="wholeCards">
         {people.map((person) => (
-          <Card key={person.name} {...person} />
+          <Card key={person.name} {...person}/>
         ))}
 
       </ul>}

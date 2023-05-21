@@ -3,14 +3,17 @@ import axios, { isCancel, AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom';
 
 
-
-
-
 export default function Deck(props) {
-    const [cardTotal, setCardTotal] = useState('');
     const navigate = useNavigate();
     const [bgImg, setBgImg] = useState('../images/blackBg.svg')
 
+    let bgArray = ['../images/blackBg.svg', '../images/redBg.svg', '../images/greenBg.svg']
+
+    useEffect(() => {
+        let randomChooser = Math.floor(Math.random() * 3)
+        setBgImg(bgArray[randomChooser])
+    }, [])
+    
 
 
     return (
@@ -20,14 +23,16 @@ export default function Deck(props) {
 
                 <div className="deckHeaderColumn">
                     <img className="deckHeaderIcon" src='./images/deckIcon.svg' />
-                    <h3 className="deckName">Name</h3>
+                    <h3 className="deckName">{props.name}</h3>
                 </div>
 
                 <div className="deckDeleteIconContainer"> <img id="deleteGroupIcon" src='./images/deleteGroupIcon.svg' /> </div>
 
             </div>
 
-            <div className='deckBody'>
+            <div className='deckBody' >
+                <span>{props.localCount}</span>
+                <p>total cards</p>
 
             </div>
         </li>

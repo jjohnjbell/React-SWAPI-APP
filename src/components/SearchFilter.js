@@ -24,3 +24,4 @@ function SearchFilter(props) {
 }
 
 export default SearchFilter
+
