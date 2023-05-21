@@ -11,7 +11,7 @@ export default function DeckSearch({setDeckSearch}) {
 
   function createDeck(){
    let deckName = prompt("Name your DECK!")
-    localStorage.setItem(deckName, JSON.stringify([]))
+    localStorage.setItem(deckName, JSON.stringify(deckName))
   }
 
   return (

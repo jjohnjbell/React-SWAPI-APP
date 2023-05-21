@@ -23,7 +23,7 @@ export default function Deck(props) {
 
                 <div className="deckHeaderColumn">
                     <img className="deckHeaderIcon" src='./images/deckIcon.svg' />
-                    <h3 className="deckName">{props.name}</h3>
+                    <p className="deckName">{props.name}</p>
                 </div>
 
                 <div className="deckDeleteIconContainer"> <img id="deleteGroupIcon" src='./images/deleteGroupIcon.svg' /> </div>
