@@ -35,7 +35,8 @@ function countValue(key){
             </div>
 
             <div className='deckBody' >
-                <span>{countValue(props.name)}</span>
+                {/* <span>{countValue(props.name)}</span> */}
+                <span>14</span>
                 {/* <span>{props.localCount}</span> */}
                 <p>total cards</p>
 

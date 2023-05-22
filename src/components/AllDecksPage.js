@@ -28,19 +28,20 @@ export default function AllDecksPage() {
   useEffect(() => {
 
     for (let i = 0; i < localStorage.length; i++) {
-      newArray.push(localStorage.key(i))
+      // newArray.push(Object.keys("main"))
+      let tempObject = JSON.parse(localStorage.getItem('main'))
+      newArray.push(Object.keys(tempObject))
     }
 
     console.log(`local storage length changed`)
     setLocalStorageArray(newArray)
   }, [localCount])
 
-
+console.log(localStorageArray)
 
   return (
     <>
 
-      {/* <div className="decksContainer"> */}
       <DeckSearch setDeckSearch={setDeckSearch} />
 
       {!localCount && <div className='noDecksCont'>
@@ -49,12 +50,12 @@ export default function AllDecksPage() {
         <p>button above.</p></div>}
 
       {localCount && <ul className="wholeCards" >
-        {localStorageArray.map((item,index) => (
-          <Deck key={index} name={item} localCount={localCount} />
-        ))}
+        {localStorageArray.map((item) => (
+          item.map((obj,index)=> <Deck key={index} name={obj} localCount={localCount} />)
+           ))}
       </ul>}
 
-      {/* </div> */}
+      
       <Pagination
         count={1}
         page={1}

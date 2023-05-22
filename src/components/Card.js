@@ -11,7 +11,7 @@ export default function Card(props) {
     const [species, setSpecies] = useState('');
     const [fetchedVehicles, setFetchedVehicles] = useState([]);
     const [fetchedStarships, setFetchedStarships] = useState([]);
-   
+
 
 
     const navigate = useNavigate();
@@ -83,14 +83,27 @@ export default function Card(props) {
     //     // console.log(retrieved)
     // }
     function createDeckEntry() {
+        let jObj = {}
+        let chooseFraction = prompt("Are you light or dark side?")
+        let deckObject = JSON.parse(localStorage.getItem("main"))
+        
+        deckObject.dark.push("GOD IS GOOD")
+            // jObj.chooseFraction = temp
 
-        // let chooseFraction = prompt("Are you light or dark side?")
+            // localStorage.setItem("deck1", JSON.stringify(jObj))
+           localStorage.setItem("main",JSON.stringify(deckObject))
 
-       localStorage.setItem(props.name, JSON.stringify({...props}))
-      
+          
+
+
     }
 
+    // let decks = {
+    //     dark: ["dark entry"],
+    //     light: ["light entry"],
+    // }
 
+    // localStorage.setItem("main",JSON.stringify(decks))
 
 
     return (
