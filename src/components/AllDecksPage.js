@@ -49,8 +49,8 @@ export default function AllDecksPage() {
         <p>button above.</p></div>}
 
       {localCount && <ul className="wholeCards" >
-        {localStorageArray.map((item) => (
-          <Deck key={localStorageArray.indexOf(item)} name={item} localCount={localCount} />
+        {localStorageArray.map((item,index) => (
+          <Deck key={index} name={item} localCount={localCount} />
         ))}
       </ul>}
 
