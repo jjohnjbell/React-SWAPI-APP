@@ -66,44 +66,21 @@ export default function Card(props) {
         }
     }, [])
 
-    // function createDeckEntry() {
 
-    //     let chooseFraction = prompt("Are you light or dark side?")
-
-    //     let temp = JSON.parse(localStorage.getItem(chooseFraction))
-
-    //     if (temp) {
-    //         array.push(props.name)
-    //         localStorage.setItem(chooseFraction, JSON.stringify({temp},array))
-    //     } else {
-    //         localStorage.setItem(chooseFraction, JSON.stringify(props.name))
-    //     }
-    //     // // let retrieved = JSON.parse(localStorage.getItem("newDeck"))
-    //     // console.log(Object.entries(localStorage).length)
-    //     // console.log(retrieved)
-    // }
     function createDeckEntry() {
         let jObj = {}
-        let chooseFraction = prompt("Are you light or dark side?")
+        let deckChoice = prompt("Add you to what deck?")
         let deckObject = JSON.parse(localStorage.getItem("main"))
-        
+
         deckObject.dark.push("GOD IS GOOD")
-            // jObj.chooseFraction = temp
+        // jObj.chooseFraction = temp
 
-            // localStorage.setItem("deck1", JSON.stringify(jObj))
-           localStorage.setItem("main",JSON.stringify(deckObject))
-
-          
-
+        // localStorage.setItem("deck1", JSON.stringify(jObj))
+        localStorage.setItem("main", JSON.stringify(deckObject))
 
     }
 
-    // let decks = {
-    //     dark: ["dark entry"],
-    //     light: ["light entry"],
-    // }
 
-    // localStorage.setItem("main",JSON.stringify(decks))
 
 
     return (

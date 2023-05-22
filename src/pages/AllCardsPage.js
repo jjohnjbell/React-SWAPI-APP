@@ -15,11 +15,6 @@ export default function AllCardsPage() {
   const [search, setSearch] = useState('')
   const [isLoading, setLoadingState] = useState(true)
 
-
-  // localStorage.setItem("made up","tested")
-  
-  // setTimeout(()=>localStorage.clear(),5000)
-
   async function fetchPeople() {
     const url = `https://swapi.dev/api/people/?page=${page}`
     setLoadingState(true)
@@ -32,6 +27,12 @@ export default function AllCardsPage() {
     setSearch('')
   }
 
+  useEffect(()=>{
+    if(!localStorage.length){
+    let initialObject = {}
+    localStorage.setItem('main',JSON.stringify(initialObject))
+    }
+  },[])
 
   //Sort Persons from A to Z
   async function fetchPeopleSorted() {

@@ -8,7 +8,7 @@ import Deck from './Deck';
 import DeckSearch from './DeckSearch';
 
 
-
+ 
 
 export default function AllDecksPage() {
   const [deckSearch, setDeckSearch] = useState('')
@@ -18,26 +18,30 @@ export default function AllDecksPage() {
   const [isLoading, setLoadingState] = useState(false)
   let newArray = []
 
-  //Initial check of localStorage length
-  useEffect(() => {
-    setLocalCount(localStorage.length)
-  }, [])
+ //Initial check of localStorage length
+ useEffect(() => {
+  setLocalCount(localStorage.length)
+}, [])
 
+  useEffect(()=>{
+    if(!localStorage.length){
+    let initialObject = {}
+    localStorage.setItem('main',JSON.stringify(initialObject))
+    }
+  },[])
 
   // Monitor local Storage to see if there are any entries to generate Decks
   useEffect(() => {
-
+    if(localStorage.getItem('main')){
     for (let i = 0; i < localStorage.length; i++) {
-      // newArray.push(Object.keys("main"))
       let tempObject = JSON.parse(localStorage.getItem('main'))
       newArray.push(Object.keys(tempObject))
     }
 
-    console.log(`local storage length changed`)
     setLocalStorageArray(newArray)
+  }
   }, [localCount])
 
-console.log(localStorageArray)
 
   return (
     <>
@@ -51,11 +55,11 @@ console.log(localStorageArray)
 
       {localCount && <ul className="wholeCards" >
         {localStorageArray.map((item) => (
-          item.map((obj,index)=> <Deck key={index} name={obj} localCount={localCount} />)
-           ))}
+          item.map((obj, index) => <Deck key={index} name={obj} localCount={localCount} />)
+        ))}
       </ul>}
 
-      
+
       <Pagination
         count={1}
         page={1}

@@ -18,6 +18,7 @@ export default function DeckSearch({ setDeckSearch }) {
     deckObject[deckName] = []
    
     localStorage.setItem("main", JSON.stringify(deckObject))
+    window.location.reload()
   }
 
   return (
