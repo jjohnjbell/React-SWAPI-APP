@@ -68,14 +68,14 @@ export default function Card(props) {
 
 
     function createDeckEntry() {
-        let tempArray =[]
-        let finalArray =[]
-        let lastArray =[]
         let deckChoice = prompt("Add you to what deck?")
         let deckObject = JSON.parse(localStorage.getItem("main"))
-        deckObject[deckChoice].push(props.name)
-        
-       
+
+        if (deckObject[deckChoice]) {
+            deckObject[deckChoice].push(props.name)
+        } else {
+            deckObject[deckChoice] = []
+        }
 
         localStorage.setItem("main", JSON.stringify(deckObject))
 

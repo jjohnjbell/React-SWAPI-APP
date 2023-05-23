@@ -12,13 +12,40 @@ export default function Deck(props) {
         let randomChooser = Math.floor(Math.random() * 3)
         setBgImg(bgArray[randomChooser])
     }, [])
-    
-function countValue(key){
-    return localStorage.getItem(key).length
-    
-}
 
-// console.log(JSON.parse(localStorage.key(joshua)).length)
+    function countValue(key) {
+        return localStorage.getItem(key).length
+
+    }
+
+    function deleteDeck(name) {
+        let obj = JSON.parse(localStorage.getItem('main'))
+        delete obj[name]
+        localStorage.setItem('main', JSON.stringify(obj))
+        window.location.reload()
+    }
+
+        function totalCards(name){
+            let obj = JSON.parse(localStorage.getItem('main'))
+            return obj[name].length
+        }
+
+    // function deleteSpecificItem(localStorageArray, objectKeyPair) {
+    //     let indexItem = localStorageArray.indexOf(objectKeyPair)
+    //     if (indexItem > -1) {
+    //         localStorageArray.splice(indexItem, 1)
+    //         localStorage.clear()
+    //         resultsEl.innerHTML = ""
+    //         localStorage.setItem("myMarks", JSON.stringify(localStorageArray))
+    //         showLinks()
+
+    //     }
+    // }
+
+
+
+
+    // console.log(JSON.parse(localStorage.key(joshua)).length)
 
     return (
         <li className='deckItem' >
@@ -30,13 +57,13 @@ function countValue(key){
                     <p className="deckName">{props.name}</p>
                 </div>
 
-                <div className="deckDeleteIconContainer"> <img id="deleteGroupIcon" src='./images/deleteGroupIcon.svg' /> </div>
+                <div onClick={()=>deleteDeck(props.name)} className="deckDeleteIconContainer"> <img  id="deleteGroupIcon" src='./images/deleteGroupIcon.svg' /> </div>
 
             </div>
 
             <div className='deckBody' >
                 {/* <span>{countValue(props.name)}</span> */}
-                <span>14</span>
+                <span>{totalCards(props.name)}</span>
                 {/* <span>{props.localCount}</span> */}
                 <p>total cards</p>
 
