@@ -74,7 +74,7 @@ export default function Card(props) {
         if (deckObject[deckChoice]) {
             deckObject[deckChoice].push(props.name)
         } else {
-            deckObject[deckChoice] = []
+            deckObject[deckChoice] = [props.name]
         }
 
         localStorage.setItem("main", JSON.stringify(deckObject))
