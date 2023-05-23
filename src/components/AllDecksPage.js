@@ -23,6 +23,7 @@ export default function AllDecksPage() {
   setLocalCount(localStorage.length)
 }, [])
 
+//if local storage is ever completely empty, a Main object with empty values is created as the foundation for decks and cards to utilize
   useEffect(()=>{
     if(!localStorage.length){
     let initialObject = {}
