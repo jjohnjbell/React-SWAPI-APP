@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Deck(props) {
     const [bgImg, setBgImg] = useState('../images/blackBg.svg')
-
+    const { isDetail } = props
+    const navigate = useNavigate()
     let bgArray = ['../images/blackBg.svg', '../images/redBg.svg', '../images/greenBg.svg']
 
     useEffect(() => {
@@ -25,10 +26,10 @@ export default function Deck(props) {
         window.location.reload()
     }
 
-        function totalCards(name){
-            let obj = JSON.parse(localStorage.getItem('main'))
-            return obj[name].length
-        }
+    function totalCards(name) {
+        let obj = JSON.parse(localStorage.getItem('main'))
+        return obj[name].length
+    }
 
     // function deleteSpecificItem(localStorageArray, objectKeyPair) {
     //     let indexItem = localStorageArray.indexOf(objectKeyPair)
@@ -48,16 +49,16 @@ export default function Deck(props) {
     // console.log(JSON.parse(localStorage.key(joshua)).length)
 
     return (
-        <li className='deckItem' >
+        <li className='deckItem'  style={{border:'2px solid red'}}>
 
             <div className='deckHeader' style={{ backgroundImage: `url(${bgImg})` }}>
 
                 <div className="deckHeaderColumn">
-                    <img className="deckHeaderIcon" src='./images/deckIcon.svg' />
+                    <img onClick={() => navigate(`/details/${props.name}`)} className="deckHeaderIcon" src='./images/deckIcon.svg' />
                     <p className="deckName">{props.name}</p>
                 </div>
 
-                <div onClick={()=>deleteDeck(props.name)} className="deckDeleteIconContainer"> <img  id="deleteGroupIcon" src='./images/deleteGroupIcon.svg' /> </div>
+                <div onClick={() => deleteDeck(props.name)} className="deckDeleteIconContainer"> <img id="deleteGroupIcon" src='./images/deleteGroupIcon.svg' /> </div>
 
             </div>
 

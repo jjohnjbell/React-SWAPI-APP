@@ -11,7 +11,7 @@ export default function AppHeader() {
                 <div className='cardDeckBtn'>
                     <a href="/"><button id='allCardsBtn' className="headerBtn"></button></a>
 
-                   <Link className="headerBtn" to="/AllDecks" ><img id= "allDecksBtn" src={allDecksBtn}/></Link>
+                   <Link className="headerBtn" to="/AllDecks" ><img id=  "allDecksBtn" src={allDecksBtn}/></Link>
 
                    <button href="#" id="profileName" className="profileName"> Joshua Bell</button>
                 </div>

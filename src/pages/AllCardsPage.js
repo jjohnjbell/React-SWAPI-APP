@@ -71,6 +71,9 @@ export default function AllCardsPage() {
         return 0
       }
     })
+    setPeople(sorted)
+    setCount(count)
+    setLoadingState(false)
   }
 
   async function fetchYoungest() {

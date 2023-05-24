@@ -43,18 +43,21 @@ export default function AllDecksPage() {
   }
   }, [localCount])
 
+  //Check if localStorage object is empty of all keys indicating no cards are present
+let mainObject = JSON.parse(localStorage.getItem('main'))
+let keyCount = Object.keys(mainObject).length
 
   return (
     <>
 
       <DeckSearch setDeckSearch={setDeckSearch} />
 
-      {!localCount && <div className='noDecksCont'>
+      { keyCount === 0 && <div className='noDecksCont'>
         <p>No Decks Created. Please create a Deck by pressing the Add Deck</p>
         <img id="noDecksImg" src='./images/deckBtn.svg' />
         <p>button above.</p></div>}
 
-      {localCount && <ul className="wholeCards" >
+      {keyCount > 0 && <ul className="deckWholeCards" >
         {localStorageArray.map((item) => (
           item.map((obj, index) => <Deck key={index} name={obj} localCount={localCount} />)
         ))}

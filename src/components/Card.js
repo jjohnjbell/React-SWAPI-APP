@@ -5,6 +5,7 @@ import AllDecksPage from './AllDecksPage';
 
 
 
+
 export default function Card(props) {
     const { isDetail, vehicles, starships } = props
     const [homeworld, setHomeworld] = useState('');
