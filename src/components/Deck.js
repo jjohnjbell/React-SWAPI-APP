@@ -49,7 +49,7 @@ export default function Deck(props) {
     // console.log(JSON.parse(localStorage.key(joshua)).length)
 
     return (
-        <li className='deckItem'  style={{border:'2px solid red'}}>
+        <li className='deckItem'  >
 
             <div className='deckHeader' style={{ backgroundImage: `url(${bgImg})` }}>
 
