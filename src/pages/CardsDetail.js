@@ -15,7 +15,6 @@ export default function CardsDetails() {
             const url = `https://swapi.dev/api/people/?search=${name}`
             setLoadingState(true)
             const detailResults = await axios.get(url);
-            console.log(detailResults)
             const { data } = detailResults;
             const {results} = data;
             setPerson(results[0])

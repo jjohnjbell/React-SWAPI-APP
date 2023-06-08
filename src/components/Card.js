@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios, { isCancel, AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom';
+import AllDecksPage from './AllDecksPage';
 
 
 
@@ -13,7 +14,10 @@ export default function Card(props) {
     const [fetchedStarships, setFetchedStarships] = useState([]);
 
 
+
     const navigate = useNavigate();
+
+
 
 
     async function fetchPersonsHomeWorld(url) {
@@ -22,18 +26,18 @@ export default function Card(props) {
         const homeName = data.name
         setHomeworld(homeName)
     }
-    
+
     async function fetchPersonsSpecie(url) {
         const specieObject = await axios.get(url)
         const { data } = specieObject
-        const specieName =data.name ? data.name : "Unknown"
-        
+        const specieName = data.name ? data.name : "Unknown"
+
         setSpecies(specieName)
-        
+
     }
 
-   
-    
+
+
     async function fetchVehiclesAndStarships() {
         const vehicleRequests = vehicles.map((url) => axios.get(url));
         const startshipRequests = starships.map((url) => axios.get(url));
@@ -42,6 +46,7 @@ export default function Card(props) {
         const startshipResponses = await axios.all(startshipRequests);
 
         const vehicleArray = vehicleResponses.map((vehicle) => vehicle.data);
+
         const starshipArray = startshipResponses.map((startship) => startship.data);
 
         setFetchedVehicles(vehicleArray)
@@ -50,9 +55,10 @@ export default function Card(props) {
 
     useEffect(() => {
         fetchPersonsSpecie(props.species);
+
     }, [])
-    
-    
+
+
 
     useEffect(() => {
         fetchPersonsHomeWorld(props.homeworld);
@@ -60,13 +66,32 @@ export default function Card(props) {
             fetchVehiclesAndStarships();
         }
     }, [])
+
+
+    function createDeckEntry() {
+        let deckChoice = prompt("Add you to what deck?")
+        let deckObject = JSON.parse(localStorage.getItem("main"))
+
+        if (deckObject[deckChoice]) {
+            deckObject[deckChoice].push(props.name)
+        } else {
+            deckObject[deckChoice] = [props.name]
+        }
+
+        localStorage.setItem("main", JSON.stringify(deckObject))
+
+    }
+
+
+
+
     return (
         <li className='card--container' >
 
             <div className='cardHeader'>
                 <div className='cardHeaderTop'>
-                    <img src= '/images/icons/cardHeaderIcon.svg' />
-                    <img src='/images/icons/deckCardButton.svg' />
+                    <img src='/images/icons/cardHeaderIcon.svg' />
+                    <img onClick={createDeckEntry} src='/images/icons/deckCardButton.svg' />
                 </div>
                 <div className="cardName" onClick={() => navigate(`/details/${props.name}`)}>{props.name} </div>
             </div>
@@ -74,15 +99,15 @@ export default function Card(props) {
             <div className='cardBody--container'>
                 <div className='cardBioData'>
 
-                    
-                        <span><img src='/images/icons/genderSymbol.svg' />{props.birth_year}</span>
-                        
+
+                    <span><img src='/images/icons/genderSymbol.svg' />{props.birth_year}</span>
+
                     <p>{species}</p>
 
-                    
-                    
+
+
                 </div>
-                
+
                 <div className="personDetails">
                     <ul className="cardBackground">
                         <li className='personDetailsList'>

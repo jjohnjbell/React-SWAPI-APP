@@ -1,34 +1,24 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+import allDecksBtn from '../assets/images/decksBtnImg.svg'
 
-export default function AppHeader(){
-
-    function tbc(){
-        document.getElementById("message").textContent = "T.B.C"
-        setTimeout(() => document.getElementById("message").textContent = "",3000)
-    }
-
-    function thankYou(){
-        document.getElementById("profileName").textContent = "Thank you!"
-        setTimeout(() => document.getElementById("profileName").textContent = "Joshua Bell",3000)
-    }
-    
-    function underConstruction(){
-        document.getElementById("message").textContent = "Apologies, Under Construction! ⛏ "
-        setTimeout(() => document.getElementById("message").textContent = "",3000)
-    }
+export default function AppHeader() {
 
 
-    return(
+    return (
         <header>
-            <nav className="navLinksRowContainer"> 
+            <nav className="navLinksRowContainer">
                 <div className='cardDeckBtn'>
-                    <button href="#" id="underConstruction" onClick={underConstruction} className="allCardsMenuImg"></button>
-                    <button href="#" onClick={tbc}className="decksMenuImg"> </button>
+                    <a href="/"><button id='allCardsBtn' className="headerBtn"></button></a>
+
+                   <Link className="headerBtn" to="/AllDecks" ><img id=  "allDecksBtn" src={allDecksBtn}/></Link>
+
+                   <button href="#" id="profileName" className="profileName"> Joshua Bell</button>
                 </div>
-                <button href="#" onClick={thankYou} id="profileName"  className="profileName"> Joshua Bell</button>
+               
             </nav>
-            <h3 id = "message"></h3>
-            <hr className="seperator"/>
+            <h3 id="message"></h3>
+            <hr className="seperator" />
         </header>
     )
 }

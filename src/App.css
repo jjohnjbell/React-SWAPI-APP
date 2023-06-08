@@ -10,24 +10,24 @@ body {
 }
 
 
+/* Main Container. Only parent--body */
+.app--container {}
 
 body {
+  width: 100vw;
+  min-width: 375px;
+  overflow-x: auto;
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
-
-}
-
-
-/* Main Container. Only parent--body */
-.app--container {
-  /* min-width: 40px; */
-  margin: 0;
   padding: 20px 28px;
   background: #EDEDED;
-  border:1px solid green;
 }
 
+/* #root{
+  width:80%;
+} */
 
 /* STYLING FOR CARDS */
 
@@ -62,7 +62,7 @@ ul {
   width: 100%;
   background: #FFFFFF;
   border-radius: 8px;
-  
+
 }
 
 
@@ -81,9 +81,10 @@ ul {
   height: 32px;
   background: #FFFFFF;
   border-radius: 4px;
-
-
+  border:none;
 }
+
+
 
 .cardHeaderTop {
   display: flex;
@@ -230,13 +231,7 @@ ul {
 
 
 
-/* App Header buttons/links */
-.navLinksRowContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
+
 
 
 .seperator {
@@ -253,33 +248,54 @@ ul {
 .cardDeckBtn {
   display: flex;
   justify-content: left;
-  align-items: center;
+  align-content: center;
   gap: .5em;
   width: 100%;
 }
 
-.profileName {
+/* App Header buttons/links */
+.navLinksRowContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5em;
+  width: 100%;
+}
+
+#profileName {
+  /* width: 129px; */
   width: fit-content;
   height: 32px;
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
+  /* font-weight: 400; */
+  font-size: 1em;
   text-align: center;
   color: #3B3B3B;
   flex: none;
   order: 0;
   flex-grow: 0;
+  border: 1px solid #B8B8B8;
   border-radius: 4px
 }
 
-.profileName:is(:hover,:focus){
+.profileName:is(:hover, :focus) {
   transform: scale(1.1);
-  box-shadow: 1px 1px 2px rgba(110, 107, 107, 0.947);  
+  box-shadow: 1px 1px 2px rgba(110, 107, 107, 0.947);
 }
 
-.allCardsMenuImg {
-  width: 7em;
+#allCardsBtn {
+  width: 112px;
+  border: none;
+}
+
+#allDecksBtn {
+  width: 92px;
+  background: #E4E4E4;
+  border-radius: 4px;
+}
+
+.headerBtn {
   height: 32px;
   border-radius: 4px;
   flex: none;
@@ -289,15 +305,26 @@ ul {
   background-size: cover;
 }
 
-.allCardsMenuImg:is(:hover,:focus) {
+#aToZ {
+  width: 63px;
+  height: 32px;
+  background-size: 63px;
+  border:none;
+  padding: 0;
+  /* margin: 0 5px; */
+
+}
+
+.headerBtn:is(:hover, :focus) {
+  transform: scale(1.01);
+  box-shadow: 1px 1px 2px rgba(110, 107, 107, 0.947);
+}
+
+.decksMenuImg:is(:hover, :focus) {
   transform: scale(1.1);
   box-shadow: 1px 1px 2px rgba(110, 107, 107, 0.947);
 }
 
-.decksMenuImg:is(:hover,:focus){
-  transform: scale(1.1);
-  box-shadow: 1px 1px 2px rgba(110, 107, 107, 0.947);
-}
 .decksMenuImg {
   flex: none;
   flex-grow: 0;
@@ -314,14 +341,14 @@ ul {
   margin: 48px 0 0 0;
 }
 
-a{
+a {
   text-decoration: none;
-  color:inherit;
+  color: inherit;
 }
 
-a:is(:hover,:focus){
+a:is(:hover, :focus) {
   text-decoration: underline;
-  color:blue;
+  color: blue;
 }
 
 .breadCrumbs span {
@@ -341,10 +368,16 @@ a:is(:hover,:focus){
 
 .searchContainer {
   display: flex;
-  margin: 24px 0 0 0;
-  gap: .375em;
+  margin: 24px 1px 1px 0;
+  /* justify-content: space-between; */
 
 }
+
+.searchContainer *{
+  width: 80%;
+  margin:0 3px;
+}
+
 
 
 
@@ -361,6 +394,12 @@ a:is(:hover,:focus){
   align-items: center;
 
 
+}
+
+.searchContainer button {
+  background: #E4E4E4;
+  border-radius: 4px;
+  border:none;
 }
 
 /* Youngest button*/
@@ -390,6 +429,23 @@ a:is(:hover,:focus){
 
 }
 
+#allCardsText {
+  width: 64px;
+  height: 16px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  color: #757575;
+}
+
+.deckWholeCards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 /* Media Queries */
 
@@ -397,16 +453,31 @@ a:is(:hover,:focus){
 /* Tablet Screen */
 @media (min-width:800px) and (max-width:1439px) {
 
-  .wholeCards {
+  .searchContainer {
+    display: flex;
+    gap: 9px;
+
+  }
+
+  body {
+    padding: 64px 189px;
+  }
+
+  .headerBtn {
+    margin-right: auto;
+  }
+
+  .wholeCards,
+  .deckWholeCards {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1em;
+
 
   }
 
 
   .searchBar {
-    /* flex-grow: 1; */
     width: 224px;
   }
 
@@ -427,17 +498,33 @@ a:is(:hover,:focus){
 
   }
 
+  body {
+    padding: 64px 189px 26px 189px;
+  }
+
 }
 
 
 /* Desktop Screen */
 @media (min-width:1440px) {
 
-  .app--container {
-    max-width: 1204px;
+
+  .searchContainer {
+    display: flex;
+    gap: 9px;
+
   }
 
-  .wholeCards {
+  .headerBtn {
+    margin-right: auto;
+  }
+
+  body {
+    padding: 32px 132px;
+  }
+
+  .wholeCards,
+  .deckWholeCards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 1em;
@@ -445,7 +532,8 @@ a:is(:hover,:focus){
 
 
 
-  .wholeCards {
+  .wholeCards,
+  .deckWholeCards {
     padding: 0;
 
   }
@@ -459,9 +547,183 @@ a:is(:hover,:focus){
     width: 352px;
   }
 
-  .app--container {
+  /* .app--container {
     background: linear-gradient(180deg, rgba(237, 237, 237, 0.947) 0%, #c7c5c523 29.75%);
 
-  }
+  } */
 
+}
+
+
+
+
+
+
+
+
+/*                                  Decks Section                                              */
+
+.deckItem {
+  margin-top: 30px;
+  width: 216px;
+  height: inherit;
+  /* default/shade/white */
+  background: #FFFFFF;
+  border-radius: 8px;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  list-style: none;
+  background: #FFFFFF;
+  border-radius: 8px;
+}
+
+/* Header Section of Deck */
+.deckHeader {
+  width: 100%;
+  height: 98px;
+  background-size: cover;
+  background-position-x: right;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 10px;
+  margin-bottom: 0;
+
+}
+
+.deckHeaderColumn {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+.deckHeaderIcon {
+  height: 13px;
+  width: 15px;
+  left: 0.5px;
+  top: 1.5px;
+  border-radius: 0px;
+}
+
+.deckName {
+  width: fit-content;
+  height: 24px;
+  left: 16px;
+  bottom: 10px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+  color: #FFFFFF;
+
+}
+
+.deckDeleteIconContainer {
+  width: 36px;
+  height: 32px;
+  right: 16px;
+  top: 16px;
+  background-color: rgba(117, 116, 116, 0.685);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#deleteGroupIcon {
+  width: 11px;
+  height: 11px;
+}
+
+
+/* Body of Deck */
+.deckBody {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 16px 0 26px 26px;
+
+}
+
+.deckBody span {
+  margin-top: 0;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 48px;
+  line-height: 40px;
+  /* identical to box height, or 83% */
+  /* default/neutral-gray/800 */
+  color: #3B3B3B;
+  padding: 0;
+}
+
+.deckBody p {
+  margin-top: 0;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  text-align: right;
+  color: #969696;
+}
+
+
+#deckBtnDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Deck & Card Controls */
+  width: 36px;
+  height: 31px;
+  /* default/shade/white */
+  background: #FFFFFF;
+  /* shadow-md */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08), 0px 4px 6px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+
+}
+
+#deckSearchContainer {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.deckSearchBar {
+  position: relative;
+  width: 80%;
+}
+
+.addNewDeck {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%
+}
+
+#noDecksImg {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  transform: scale(.8);
+}
+
+.noDecksCont {
+  flex-wrap: wrap;
+  margin: 0;
+  margin-top: 24px;
+  align-content: center;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 0;
+  font-size: .9em;
 }
